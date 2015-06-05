@@ -14,17 +14,37 @@ public class Employee {
     Kids kids;
     
     int id;
-    String neme;
+    String name;
     String contract;
     String address;
     int salary;
 
     public Employee(int id, String neme, String address, int salary) {
         this.id = id;
-        this.neme = neme;
+        this.name = neme;
         this.address = address;
         this.salary = salary;
     }
+
+    public void destroy() {
+        this.id = 0;
+        this.name = null;
+        this.address = null;
+        this.salary = 0;
+    }
     
-    
+    public void addKids(Kids newKids){
+        if (noKids()) {
+            this.kids = newKids;
+        } else {
+            Kids tempKids = this.kids;
+            while (tempKids.next != null){
+                tempKids = tempKids.next;
+            }
+            tempKids.next = newKids;
+        }
+    }
+    public boolean noKids(){
+        return(kids == null);
+    }
 }

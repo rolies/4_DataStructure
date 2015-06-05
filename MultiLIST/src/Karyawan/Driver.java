@@ -11,42 +11,20 @@ package Karyawan;
  */
 public class Driver {
     public static void main(String[] args) {
-        Employee karyawan = new Employee(1, "Employee 1", "Riau", 80000000);
-        karyawan.next = new Employee(2, "Employee 2", "Semarang", 20000000);
-        karyawan.next.next = new Employee(3, "Employee 3", "pekan", 29000000);
+        EmployeeLinkedList empData = new EmployeeLinkedList();
         
-        karyawan.kids = new Kids("sekudel", 10, 2);
-        karyawan.kids.next = new Kids("ahmed", 8, 3);
+        empData.add(new Employee(1, "Andre", "Semarang", 2000000));
+        empData.add(new Employee(2, "ahmed", "paki", 3000000));
+        empData.add(new Employee(3, "Anand", "india", 4000000));
+        empData.add(new Employee(4, "John dew", "Florida", 5000000));
+        empData.add(new Employee(5, "Kemal", "Turkey", 6000000));
+        empData.add(new Employee(6, "Mohammadi", "Iran", 3000000));
         
-        karyawan.next.kids = new Kids("deden", 10, 2);
+        Employee emp = empData.getEmployee(5);
         
-        //Show all Kids of particular employess
-        Kids temp = karyawan.kids.next;
-        while (temp != null){
-            System.out.println("The name of kids is: "+temp.name);
-            temp = temp.next;
-        }
-        System.out.println("==============================");
-        project proj1 = new project("C sharp", true);
-        proj1.next = new project ("Java Implementation", true);
-        proj1.next.next = new project ("Xamarin iOS", false);
-        proj1.next.next.next = new project ("Polymmer material", false);
-        proj1.next.next.next.next = new project ("Material GUI", false);
-        proj1.next.next.next.next.next = new project ("CV Resume", false);
+        emp.name = "Tarno";
+        emp.address = "Demak";
         
-        proj1.supervisor = karyawan;
-        proj1.next.supervisor = karyawan.next;
-        proj1.next.next.supervisor = karyawan;
-        proj1.next.next.next.supervisor = karyawan.next.next;
-        proj1.next.next.next.next.supervisor = karyawan.next;
-        proj1.next.next.next.next.next.supervisor = karyawan.next.next;
-        
-        project tempProject = proj1;
-        while (tempProject != null) {
-            if (tempProject.done == true && tempProject.supervisor == karyawan)
-            System.out.println("Supervisior "+tempProject.supervisor+" create : "+tempProject.projectName);
-        tempProject = tempProject.next;
-        }
-        System.out.println("====================================");
+        empData.show();
     }
 }
